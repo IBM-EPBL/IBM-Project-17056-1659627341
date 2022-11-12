@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0%;
+            padding: 0%;
+            background-color: #5DA3FA;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container img{
+            width: 70vw;
+        }
+
+        h1{
+            text-align: center;
+            margin-top: 2rem;
+            margin-bottom: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to ABC Hospital</h1>
+    <div class="container">
+        <img src="https://www.alert-software.com/hubfs/it%20department%20hospital.png" alt="">
+    </div>
+    <script>
+        window.watsonAssistantChatOptions = {
+          integrationID: "d5eed346-00c7-44cf-b216-938bd28e0a06", // The ID of this integration.
+          region: "au-syd", // The region your integration is hosted in.
+          serviceInstanceID: "c704e950-4eb4-45ae-ab09-951cc0400c49", // The ID of your service instance.
+          onLoad: function(instance) { instance.render(); }
+        };
+        setTimeout(function(){
+          const t=document.createElement('script');
+          t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+          document.head.appendChild(t);
+        });
+      </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="../static/dstatic.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="logo">MyMoney</h1>
+        <ul class="nav-ul">
+            <li class="nav-li"><a href="/logout">Logout</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="left">
+            <div class="list">
+                <!-- <div class="group"> -->
+                    <h2 class="sub-head">Expense History</h2>
+                <!-- </div> -->
+                <div class="group">
+                    <div class="inner-group">
+                        <h2 class="item">Title</h2>
+                        <h2 class="item">Rs 2000</h2>
+                    </div>
+                    <h3 class="item-dt">12-10-2022 5:56</h3>
+                </div>
+                <div class="group">
+                    <div class="inner-group">
+                        <h2 class="item">Title</h2>
+                        <h2 class="item">Rs 2000</h2>
+                    </div>
+                    <h3 class="item-dt">12-10-2022 5:56</h3>
+                </div>
+                <div class="group">
+                    <div class="inner-group">
+                        <h2 class="item">Title</h2>
+                        <h2 class="item">Rs 2000</h2>
+                    </div>
+                    <h3 class="item-dt">12-10-2022 5:56</h3>
+                </div>
+                <div class="group">
+                    <div class="inner-group">
+                        <h2 class="item">Title</h2>
+                        <h2 class="item">Rs 2000</h2>
+                    </div>
+                    <h3 class="item-dt">12-10-2022 5:56</h3>
+                </div>
+                <!-- <div class="group">
+                    <h3 class="item">Title</h3>
+                    <h3 class="item">Ts 2000</h3>
+                </div>
+                <div class="group">
+                    <h3 class="item">Title</h3>
+                    <h3 class="item">Ts 2000</h3>
+                </div>
+                <div class="group">
+                    <h3 class="item">Title</h3>
+                    <h3 class="item">Ts 2000</h3>
+                </div>
+                <div class="group">
+                    <h3 class="item">Title</h3>
+                    <h3 class="item">Ts 2000</h3>
+                </div>
+                <div class="group">
+                    <h3 class="item">Title</h3>
+                    <h3 class="item">Ts 2000</h3>
+                </div> -->
+            </div>
+        </div>
+        <div class="right">
+            <form class="add">
+                <h2>Add Expense</h2>
+                <input type="text" name="title" id="title" class="inp" placeholder="Title">
+                <input type="text" name="price" id="price" class="inp" placeholder="Amount in Rs">
+                <input type="text" name="description" id="description" class="inp" placeholder="Description">
+                <!-- <input type="text" name="type" id="type" class="inp" placeholder="Paid through"> -->
+                <select name="source" id="source" class="choose">
+                    <option value="" disabled selected >Choose Mode of Payment</option>
+                    <option value="CreditCard">Credit Card</option>
+                    <option value="DebitCard">Debit Card</option>
+                    <option value="cash">cash</option>
+                    <option value="UPI">UPI</option>
+                </select>
+                <input type="submit" value="Add" class="inp-btn">
+            </form>
+        </div>
+    </div>
+</body>
+</html>
