@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap');
+@import url('http://fonts.cdnfonts.com/css/lemon-tuesday');
+*{
+    box-sizing: border-box;
+    margin: 0em;
+    padding: 0em;
+    font-family: 'Montserrat', sans-serif;
+}
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 92.3vh;
+    width: 100vw;
+    background-color: #120E43;
+    color: aliceblue;
+}
+
+.register{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.inp{
+    width: 20vw;
+    height: 5vh;
+    border: 2px solid #120E43;
+    border-radius: 6px;
+    border: 2px solid #a3a3a3;
+    font-size: 20px;
+    font-weight: 500;
+    padding-left: 10px;
+}
+
+label{
+    margin-top: 1.4rem;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.inp-btn{
+    margin-top: 1.5rem;
+    width: 20vw;
+    height: 5vh;
+    background-color: #6c73ee;
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 6px;
+}
+.inp-btn:hover{
+    background-color: #545CB3;
+    cursor: grab;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: #6c73ee; */
+    background-color: #7C4CFB;
+    color: rgb(234, 237, 240);
+}
+.nav-ul{
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+}
+
+.nav-li{
+    padding: 1rem;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.nav-li:hover{
+    /* background-color: #545CB3; */
+    background-color: #9900FF;
+    cursor: pointer;
+}
+.nav-li a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo{
+    font-family: 'Lemon Tuesday', sans-serif;
+    font-size: 2rem;
+    padding-left: 1rem;
+    padding-bottom: 0.6rem;
+}
