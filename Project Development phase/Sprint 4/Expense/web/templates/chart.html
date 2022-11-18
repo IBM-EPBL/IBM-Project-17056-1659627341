@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'dstatic.css')}}">
+    <style>
+        .chart{
+            width: 50vw;
+            height: 50vh;
+        }
+      
+    </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1 class="logo">MyMoney</h1>
+    <ul class="nav-ul">
+      <a href="/profile"><li class="nav-li">Profile</li></a>
+      <a href="/dashboard"><li class="nav-li">Dashboard</li></a>
+      <a href="/addAccount"><li class="nav-li">Add Account</li></a>
+      <a href="/logout"><li class="nav-li">Logout</li></a>
+    </ul>
+</nav>
+  <div class="chart-inp">
+    <div class="inp-chart">
+      <div class="comb">
+        <h2>Chart For :</h2>
+        <select name="category" id="chartCategory" class="choose-db">
+          <option value="Categories">Categories</option>
+          <option value="paymentMode">Payment Mode</option>
+        </select>
+      </div>
+      <div class="comb">
+        <h2>Chart Type :</h2>
+        <select name="chart" id="chartOption" class="choose-db">
+          <option value="bar">Bar Chart</option>
+          <option value="pie">Pie Chart</option>
+          <option value="donut">Donut Chart</option>
+        </select>
+      </div>
+          <a href="/pdf" class="link-btn-top"> <h2>Generate Report</h2></a>
+    </div>
+  </div>
+  <div class="cont">
+    <div class="chart">
+      <canvas id="myChart"></canvas>
+    </div>
+
+   <div class="table">
+      <table>
+        <tr class="colname">
+          <th>Paid For</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Payment Mode</th>
+          <th>Date and Time</th>
+        </tr>
+        
+        {% for e in expenseHistory %}
+        <tr>
+          <th>{{e[0]}}</th>
+          <th>{{e[1]}}</th>
+          <th>{{e[2]}}</th>
+          <th>{{e[3]}}</th>
+          <th>{{e[4]}}</th>
+        </tr>
+        {% endfor %}
+      </table>
+   </div>
+
+   <a href="/pdf" class="link-btn"> <h2>Generate Report</h2></a>
+
+  </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" ></script>
+      <script>
+
+        var categoryData = [0,0,0,0,0];
+        var paymentType = [0,0,0,0,0];
+
+        var i=0;
+
+        {% for c in categoryData %}
+          categoryData[i] = {{c}}
+          i=i+1
+        {% endfor %}
+
+        var j=0;
+
+        {% for p in paymentType %}
+          paymentType[j] = {{p}}
+          j=j+1
+        {% endfor %}
+
+        console.log(categoryData)
+        console.log(paymentType)
+
+        const ctx = document.getElementById('myChart');
+
+       const conf = {
+          type: 'bar',
+          data: {
+            labels: ['Food and Drinks','Transportation','Entertainment','Mobile','Investment'], //categories here
+            datasets: [{
+              label: 'Rs. ',
+              data: categoryData,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        }
+
+        const data = {
+            labels: ['Food and Drinks','Transportation','Entertainment','Mobile','Investment'],
+            datasets: [{
+                label: 'Rs. ',
+                data: categoryData,
+                backgroundColor: [
+                  '#8D3DAF',
+                  '#50DBB4',
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+            };
+            const config1 = {
+            type: 'doughnut',
+            data: data,
+            radius: 1
+            };
+
+        const data2 = {
+          labels: ['Food and Drinks','Transportation','Entertainment','Mobile','Investment'],
+          datasets: [{
+            label: 'Rs . ',
+            data: categoryData,
+            backgroundColor: [
+            '#8D3DAF',
+                  '#50DBB4',
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+            ]
+          }]
+        };
+        const config2 = {
+          type: 'polarArea',
+          data: data,
+          options: {}
+        };
+
+        //---
+        const confT1 = {
+          type: 'bar',
+          data: {
+            labels: ['Cash', 'UPI', 'Debit Card', 'Credit Card', 'Cheque'], //categories here
+            datasets: [{
+              label: 'Rs. ',
+              data: paymentType,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        }
+
+        const dataT1 = {
+            labels: ['Cash', 'UPI', 'Debit Card', 'Credit Card', 'Cheque'],
+            datasets: [{
+                label: 'Rs. ',
+                data:paymentType,
+                backgroundColor: [
+                '#8D3DAF',
+                '#50DBB4',
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+            };
+            const configT1 = {
+            type: 'doughnut',
+            data: dataT1,
+            radius: 1
+            };
+        
+        
+        const dataT2 = {
+          labels: ['Cash', 'UPI', 'Debit Card', 'Credit Card', 'Cheque'],
+          datasets: [{
+            label: 'Rs. ',
+            data: paymentType,
+            backgroundColor: [
+                '#8D3DAF',
+                '#50DBB4',
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+            ]
+          }]
+        };
+        const configT2 = {
+          type: 'polarArea',
+          data: dataT2,
+          options: {}
+        };
+
+        var chartSelect = document.getElementById("chartOption");
+        var graphType = document.getElementById("chartCategory")
+        var context = ctx.getContext('2d')
+        var current = new Chart(ctx, conf)
+        var type=0
+
+        function changeType(){
+          if(graphType.value==="paymentMode"){
+            type=1
+            changeChart()
+          }else if(graphType.value==="Categories"){
+            type=0
+            changeChart()
+          }
+        }
+
+        graphType.onchange = changeType
+
+        function changeChart(){
+          
+          if(type===0){
+            if(chartSelect.value==="bar"){
+              current.destroy()
+              console.log(conf);
+              current  = new Chart(ctx, conf);
+            }else if(chartSelect.value=="pie"){
+              current.destroy()
+              console.log(config1);
+              current  = new Chart(ctx, config1)
+            }else{
+              current.destroy()
+              console.log(config2);
+              current = new Chart(ctx,config2)
+            }
+          }
+          else if(type===1){
+            if(chartSelect.value==="bar"){
+              current.destroy()
+              current  = new Chart(ctx, confT1);
+            }else if(chartSelect.value=="pie"){
+              current.destroy()
+              current  = new Chart(ctx, configT1)
+            }else{
+              current.destroy()
+              current = new Chart(ctx,configT2)
+            }
+          }
+        }
+        chartSelect.onchange = changeChart
+      </script>
+</body>
+</html>
