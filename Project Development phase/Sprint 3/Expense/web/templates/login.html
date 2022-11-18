@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'style.css')}}">
+    <title>Register</title>
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="logo">MyMoney</h1>
+        <ul class="nav-ul">
+            <li class="nav-li"><a href="/register">Register</a></li>
+        </ul>
+    </nav>
+    <div class="container">
+                <div class="left">
+                    <div class="img-div-left">
+                        <img src="{{url_for('static', filename = 'exp3.png')}}" alt="" class="main-img-left">
+                    </div>
+                </div>
+                <div class="center">
+        
+                    <h1 class="head">Login to your Account</h1>
+
+        
+                    <form action="/login" class="register" method="post">
+        
+                        <label for="email">Email</label>
+                        <input type="email" name="email" class="inp">
+        
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="inp">
+        
+                        <input type="submit" value="Login" class="inp-btn">
+        
+                    </form>
+                </div>
+                <div class="right">
+                    <div class="img-div-right">
+                        <img src="{{url_for('static', filename = 'exp4.png')}}" alt="" class="main-img-right">
+                    </div>
+                </div>
+    </div>
+</body>
+</html>
