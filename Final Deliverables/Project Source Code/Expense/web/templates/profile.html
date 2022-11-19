@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'dstatic.css')}}">
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="logo">MyMoney</h1>
+        <ul class="nav-ul">
+            <a href="/dashboard"><li class="nav-li">Dashboard</li></a>
+            <a href="/charts"><li class="nav-li">Analyse</li></a>
+            <a href="/addAccount"><li class="nav-li">Add Account</li></a>
+            <a href="/logout"><li class="nav-li">Logout</li></a>
+        </ul>
+    </nav>
+    <div class="container-p">
+        <form action="profile" method="post" class="profile">
+
+            <h1 style="margin-bottom: 15px;">Profile</h1>
+
+            <div class="grp-form">
+                <label for="name">Name : </label>
+                <input type="text" name="name" id="name" class="inp-db" value="{{session['name']}}">
+            </div>
+            <div class="grp-form">
+                <label for="name">Email : </label> 
+                <input type="text" name="emai" id="email" disabled  class="inp-db" style="color: #fff;" value="{{session['email']}}">
+            </div>
+            <div class="grp-form">
+                <label for="password">Password : </label>
+                <input type="password" name="password" id="password"  class="inp-db">
+            </div>
+
+            <div class="grp-form">
+                <label for="budget">Budget : </label>
+                <input type="text" name="budget" id="budget"  class="inp-db" value="{{session['actualBudget']}}">
+            </div>
+
+            <input type="submit" value="Update Profile" class="inp-btn-db">
+
+
+        </form>
+
+        
+    </div>
+</body>
+</html>

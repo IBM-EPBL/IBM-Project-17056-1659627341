@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'dstatic.css')}}">
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="logo">MyMoney</h1>
+        <ul class="nav-ul">
+            <a href="/profile"><li class="nav-li">Profile</li></a>
+            <a href="/addAccount"><li class="nav-li">Add Account</li></a>
+            <a href="/charts"><li class="nav-li">Analyse</li></a>
+            <a href="/logout"><li class="nav-li">Logout</li></a>
+        </ul>
+    </nav>
+    <div class="container-db">
+        <div class="left-db">
+            <div class="balances">
+                <h1 class="head">Balance Avaliable</h1>
+                <br>
+                {% for s in session['accounts'] %}
+                <h2 class="bal">{{s[0]}} : Rs. {{s[1]}}</h2> 
+                {% endfor %}
+                <h2 class="bal-total">Total : Rs.{{session['balance']}}</h2>
+            </div>
+            <div class="group">
+                <h2 class="sub-head-db">Expense History</h2>
+            </div>
+            <div class="list-db">
+
+               
+                    {% for e in session['expense'] %}
+                    <div class="group-db">
+                        <div class="inner-group-db">
+                            <h2 class="item-db">{{e[0]}}</h2>
+                            <h2 class="item-db">Rs {{e[1]}}</h2>
+                        </div>
+                        <h3 class="item-dt-db">{{e[2]}}</h3>
+                    </div>
+                    {% endfor %}
+
+
+
+            </div>
+        </div>
+        <div class="right-db">
+            <form class="add-db" method="post" action="/addExpense">
+                <h2>Add Expense</h2>
+                <input type="text" name="title" id="title" class="inp-db" placeholder="Title">
+                <input type="text" name="price" id="price" class="inp-db" placeholder="Amount in Rs">
+                <input type="text" name="description" id="description" class="inp-db" placeholder="Description">
+                <select name="category" id="category" class="choose-db">
+                    <option value="Food and Drinks">Food and Drinks</option>
+                    <option value="Transportation">Transportation</option>
+                    <option value="Entertainment">Entertainment</option>
+                    <option value="Mobile">Mobile</option>
+                    <option value="Investment">Investment</option>
+                </select>
+                <select name="accountname" id="accountname" class="choose-db">
+                    <option value="" disabled selected >Choose Mode of Payment</option>
+                </select>
+                <select name="paymenttype" id="paymenttype" class="choose-db"></select>
+                <input type="submit" value="Add" class="inp-btn-db">
+            </form>
+            {% if message %}
+            <div class="alert-error">
+                <h3>{{message}}</h3>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <script>
+        var payments = {{session['pay']|tojson}};
+        var pt = payments
+        console.log(payments);
+        var acc = document.getElementById("accountname")
+        var paym = document.getElementById("paymenttype")
+        for(var key in payments){
+            var tt = pt[key]
+            acc.innerHTML+="<option value='"+key+"'>"+key+"</option>";
+        }
+        console.log("After :",payments);
+        function populateDropDown(){
+            var temp = payments[acc.value];
+            console.log("Temp :",temp, " - acc :",acc.value);
+            paym.innerHTML = ""
+            for(let i=0; i<temp.length-1; i++){
+                paym.innerHTML += "<option value='"+temp[i]+"--"+temp[temp.length-1]+"'>"+temp[i]+"</option>";
+            }
+        }
+        acc.onchange = populateDropDown;
+        </script>
+</body>
+</html>

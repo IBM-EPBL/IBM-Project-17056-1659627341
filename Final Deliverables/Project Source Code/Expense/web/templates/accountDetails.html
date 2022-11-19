@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details</title>
+    <link rel="stylesheet" href="{{url_for('static', filename = 'dstatic.css')}}">
+</head>
+<body>
+    <nav class="navbar">
+        <h1 class="logo">MyMoney</h1>
+        <ul class="nav-ul">
+            <a href="/profile"><li class="nav-li">Profile</li></a>
+            <a href="/dashboard"><li class="nav-li">Dashboard</li></a>
+            <a href="/addAccount"><li class="nav-li">Add Account</li></a>
+            <a href="/logout"><li class="nav-li">Logout</li></a>
+        </ul>
+    </nav>
+    <div class="container-acc">
+        <form action="addAccount" class="accDetails" method="post">
+            <h1>Add Account Details</h1>
+            <label for="accname" class="label-ac">Account Title</label>
+            <input type="text" name="accname" id="accname" class="inp-ac" placeholder="Account Title">
+
+            <label for="accno" class="label-ac">Account Number</label>
+            <input type="number" name="accno" id="accno" class="inp-ac" placeholder="Account Number">
+
+            <label for="balance" class="label-ac">Account Balance (in Rupees)</label>
+            <input type="number" name="balance" id="balance" class="inp-ac" placeholder="Balance">
+
+            <h3 style="margin:1rem 0rem">Choose Payment Options that are enabled in this account</h3>
+            <div class="choosecheckbox">
+                <label for="upi" class="label-ac">UPI</label>
+                <input type="checkbox" name="upi" id="upi" value="True">
+
+                <label for="cc" class="label-ac">Credit Card</label>
+                <input type="checkbox" name="cc" id="cc" value="True">
+
+                <label for="dc" class="label-ac">Debit Card</label>
+                <input type="checkbox" name="dc" id="dc" value="True">
+
+                <label for="Cheque" class="label-ac">Cheque</label>
+                <input type="checkbox" name="Cheque" id="Cheque" value="True">
+            </div>
+
+            <input type="submit" class="inp-btn-ac" value="Add Account">
+        </form>
+    </div>
+</body>
+</html>
